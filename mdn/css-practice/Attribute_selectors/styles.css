@@ -1,0 +1,19 @@
+li[class^="a"] {
+  font-size: 200%;
+}
+
+li[class$="a"] {
+  background-color: yellow;
+}
+
+li[class*="a"] {
+  color: red;
+}
+
+li[class^="a"] {
+  background-color: yellow;
+}
+
+li[class^="a" i] {
+  color: red;
+}
