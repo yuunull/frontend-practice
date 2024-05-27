@@ -1,0 +1,17 @@
+{
+  "name": "frontend-practice",
+  "version": "1.0.0",
+  "description": "## html/css/javascript の練習で利用するリポジトリ",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "build:watch": "npx tsc --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@types/node": "^18.19.33",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
