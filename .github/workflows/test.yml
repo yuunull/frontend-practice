@@ -1,0 +1,13 @@
+name: Test
+on:
+  pull_request: # プルリクエストが作成されたら起動
+    paths: ["src/**/*.ts"]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # ステップ1: チェックアウト
+      - uses: actions/setup-node@v4 # ステップ2: 言語セットアップ
+        with:
+          node-version: 18.18
+      - run: npm run test
