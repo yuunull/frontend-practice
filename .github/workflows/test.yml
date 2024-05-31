@@ -10,5 +10,6 @@ jobs:
       - uses: actions/setup-node@v4 # ステップ2: 言語セットアップ
         with:
           node-version: 18.18
+          cache: "npm"
       - run: npm ci
       - run: npm run test
