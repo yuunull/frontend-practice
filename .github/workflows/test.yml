@@ -1,7 +1,6 @@
 name: Test
 on:
-  pull_request: # プルリクエストが作成されたら起動
-    paths: ["src/**/*.ts"]
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest

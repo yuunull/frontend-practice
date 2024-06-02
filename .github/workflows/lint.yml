@@ -1,4 +1,4 @@
-name: run eslint
+name: run lint && unit test
 on:
   pull_request:
     paths: ["src/**/*.ts"]
@@ -11,12 +11,23 @@ concurrency: # 自動キャンセル
 jobs:
   lint:
     runs-on: ubuntu-latest
-    timeout-minutes: 5 # タイムアウト
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4 # ステップ2: 言語セットアップ
+      - uses: actions/setup-node@v4
         with:
           node-version: 18.18
           cache: "npm"
       - run: npm ci
       - run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.18
+          cache: "npm"
+      - run: npm ci
+      - run: npm run test
