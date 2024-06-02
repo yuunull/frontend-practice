@@ -1,0 +1,22 @@
+name: run eslint
+on:
+  pull_request:
+    paths: ["src/**/*.ts"]
+defaults: # デフォルトシェル
+  run:
+    shell: bash
+concurrency: # 自動キャンセル
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5 # タイムアウト
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4 # ステップ2: 言語セットアップ
+        with:
+          node-version: 18.18
+          cache: "npm"
+      - run: npm ci
+      - run: npm run lint
