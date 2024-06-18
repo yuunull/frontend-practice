@@ -9,7 +9,10 @@
     "build": "npx tsc",
     "build:watch": "npx tsc --watch",
     "reinstall": "npm cache clean --force && rm -rf ~/.npm && rm -rf node_modules && npm install",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean-merged-branches": "npm run clean-merged-remote-branches && npm run clean-merged-local-branches",
+    "clean-merged-remote-branches": "git branch -r --merged main | grep -v -e main | sed -e 's% *origin/%%' | xargs -I% git push --delete origin %",
+    "clean-merged-local-branches": "git branch --merged main | grep -vE '^\\*|main$|develop$' | xargs -I % git branch -d %"
   },
   "author": "",
   "license": "",
